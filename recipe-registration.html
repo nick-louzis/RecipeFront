@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <script src="./assets/js/jquery/jquery.js"></script>
+    <script src="./assets/js/jquery_ui/jquery-ui.min.js"></script>
+
+    <script src="./assets/js/jquery/jquery.validate.min.js"></script>
+
+    <script src="./assets/js/app.js"></script>
+
+</head>
+<body>
+<div class="outer-container sintages-container">
+    <header id="header">
+        <div class="header-inner flex">
+            <div class="logo">
+                <a href="./homepage.html"><img src="./images/logo.png" alt="Logo icon"></a>
+            </div>
+            <div id="menu-toggle">
+                <span class="fa-solid fa-bars"></span>
+            </div>
+            <nav role="navigation">
+                <ul id="navigation-menu" class="flex">
+                    <li>
+                        <form class="search flex" action="" id="formSearch">
+                            <label for="search-form">Search Form</label>
+                            <input type="search" id="search-form" name="search-form">
+                            <button id="main_search" type="submit">
+
+                                <span class="fa-solid fa-magnifying-glass search-icon"></span>
+                            </button>
+                        </form>
+                    </li>    
+                    <li><a class="nav_bar_link_item" href="./category.html">ΚΑΤΗΓΟΡΙΕΣ</a></li>
+                    <li><a class="nav_bar_link_item" href="./recipe-registration.html">ΚΑΤΑΧΩΡΗΣΗ ΣΥΝΤΑΓΗΣ</a></li>
+                    <!--<li><a class="nav_bar_link_item" href="./login.html">LOGIN</a></li>
+                    <li><a class="nav_bar_link_item" href="./register.html">REGISTER</a></li>-->
+                </ul>
+            </nav>
+        </div>    
+    </header>
+    <h1>Καταχώρηση συνταγής</h1>
+
+    <div class="sintages-wrapper">
+
+
+        <form action="" id="recipe_form" novalidate="novalidate">
+            <div class="controller">
+                <input type="text" name="recipe_name" id="recipe_name" placeholder="Όνομα συνταγής">
+            </div>
+            <div class="controller">
+
+                <select name="category_select" id="category_select" >
+                    <option value="" disabled selected>- Επίλεξε Κατηγορία -</option>
+                  
+                </select>
+
+            </div>
+            <div class="controller">
+                <input type="number" min="0" name="preparation_time" id="preparation_time" placeholder="Χρόνος εκτέλεσης" >
+            </div>
+
+            <div class="controller">
+                <select name="difficulty" id="difficulty">
+                    <option value="" disabled selected>- Επέλεξε Βαθμό Δυσκολίας -</option>
+                    <option value="Easy">Εύκολη</option>
+                    <option value="Medium">Μέτρια</option>
+                    <option value="Hard">Δύσκολη</option>
+                </select>
+
+            </div>
+
+            <div class="controller">
+                <input type="number" min="0" name="servings" id="servings" placeholder="Μερίδες" >
+            </div>
+
+            <div class="controller">
+                <input type="file" name="recipe_image" id="recipe_image" placeholder="Εικόνα Συνταγής"
+                       accept="image/png, image/gif, image/jpeg">
+            </div>
+
+            <div class="controller ingredients">
+                <input type="text" id="ingredients_input" name="ingredients_input" value="" placeholder="Πρόσθεσε τα υλικά σου" >
+                <button type="button" class="ingredients-button">+</button>
+            </div>
+
+            <div class="display-ingredients"></div>
+
+            <div class="input_div controller">
+                <input type="text" name="instructions_input" id="instructions_input" placeholder="Πρόσθεσε τα βήματα με τη σειρά"/>
+                <button id="addInstruction" type="button" class="addButton">+</button>
+                <br/>
+            </div>
+
+            <div class="container-steps">
+                <ol class="instruction-steps">
+                    <!-- Dynamic Content -->
+                </ol>
+            </div>
+
+
+            <button class="ingredients-btn" type="button" id="submit_recipe">Submit</button>
+        </form>
+
+
+    </div>
+
+    <footer class="flex">
+        <div class="logo flex">
+            <img src="./images/logo.png" alt="Logo icon">
+        </div>
+        <div class="copyright"><span>Copyright © 2024 Συνταγές Μαγειρικής. All rights reserved. Designed &amp; Built by Κοτσώνης Ιωάννης, Λούζης Νίκος, Μπακαλώνη Ελπίδα, Τζιβένης Κωνσταντίνος</span>
+        </div>
+    </footer>
+</div>
+<div class="loading-screen"></div>
+<script>
+    addFormInit();
+</script>
+
+<script src="assets/js/category.js"></script>
+</body>
+</html>

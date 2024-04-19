@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="./assets/js/jquery/jquery.js"></script>
+    <script src="./assets/js/jquery/jquery.validate.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+</head>
+<body>
+<div class="outer-container">
+    <header id="header" class="flex">
+        <div class="logo">
+            <a href="./homepage.html"><img src="./images/logo.png" alt="Logo icon"></a>
+        </div>
+        <nav>
+            <ul class="flex">
+                <li><a class="nav_bar_link_item" href="./category.html">ΚΑΤΗΓΟΡΙΕΣ</a></li>
+                <li><a class="nav_bar_link_item" href="./login.html">LOGIN</a></li>
+                <li><a class="nav_bar_link_item" href="./register.html">REGISTER</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container flex">
+        <div class="background-form flex">
+            <h1>Register</h1>
+            <form id="register_form" novalidate="novalidate" action="">
+                <div class="controler">
+                    <input  type="text" name="fName" id="fName" placeholder="First name*">
+<!--                    <small id="check" class="fName-check">First is missing</small>-->
+                </div>
+                <div class="controler">
+                    <input type="text" name="lName" id="lName" placeholder="Last name*">
+<!--                    <small id="check" class="lName-check">Last name is missing</small>-->
+                </div>
+                <div class="controler">
+                    <input type="text" name="username" id="username" placeholder="Username*">
+<!--                    <small id="check" class="uName-check">Last name is missing</small>-->
+                </div>
+                <div class="controler">
+                    <input type="password" name="password" id="password" placeholder="Password*">
+<!--                    <small id="check" class="password-check">password is missing</small>-->
+                </div>
+                <div class="controler">
+                    <input type="email" name="email" id="email" placeholder="Email*">
+<!--                    <small id="check" class="email-check">email is missing</small>-->
+                </div>
+                <button id="submitRegister" type="button" class="btn">Submit</button>
+            </form>
+        </div>
+        <div class="img-form">
+            <img class="image-form" src="./images/register.jpg" alt="">
+        </div>
+    </div>
+    <footer class="flex">
+        <div class="logo flex">
+            <img src="./images/logo.png" alt="Logo icon">
+        </div>
+        <div class="copyright"><span>Copyright © 2024 Συνταγές Μαγειρικής. All rights reserved. Designed &amp; Built by Κοτσώνης Ιωάννης, Λούζης Νίκος, Μπακαλώνη Ελπίδα, Τζιβένης Κωνσταντίνος</span>
+        </div>
+    </footer>
+</div>
+<div class="loading-screen"></div>
+</body>
+</html>

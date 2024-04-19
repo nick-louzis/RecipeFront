@@ -1,0 +1,242 @@
+:root {
+    --primary-color: #2a2a2a;
+    --gray-color:#f3f3f3;
+    --secondary-color: #bf3033;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btns_wrapper{
+
+padding: 20px;
+display: flex;
+justify-content:space-around;
+margin: 50px;
+
+}
+
+.btns_wrapper button {
+    letter-spacing: 2px;
+    border:none;
+    min-width: 80px;
+    border-radius:5px;
+    padding:10px;
+    background:var(--secondary-color);
+    color:white;
+    font-size:14px;
+    transition:all .2s;
+    cursor: pointer;
+
+}
+
+.btns_wrapper button:hover{
+background:var(--primary-color);
+transform: scale(1.1);
+}
+
+#main_search,.search-icon
+{
+    cursor: pointer;
+}
+
+
+@keyframes fadeIn{
+    from { 
+        scale: .5;
+        opacity: 0;
+    }to{
+        scale:1;
+        opacity: 1;
+    }
+}
+
+a{
+animation: fadeIn 1.3s ease-in-out forwards;
+}
+
+@keyframes toRight{
+    from { 
+        scale: .1;
+        opacity: 0;
+        transform: translateY(-500%);
+    }to{
+        scale:1;
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+
+.title{
+    animation: toRight 1.4s ease-out forwards ;
+}
+.monkey_cnt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.monkey{
+  display: block;
+  width: 30%;
+  height: 50%;
+}
+
+@media (width > 880px){
+    .monkey{
+        width: 15% !important;
+      }
+}
+
+.ingredients ul{
+    list-style: none;
+    line-height: 2;
+}
+input{
+    cursor: pointer;
+}
+
+#title_cnt p,
+#prep_time_cnt  p {
+font-weight: bold;
+}
+
+.update_cnt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_outer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 250px;
+    min-height: 50px;
+}
+
+.input_cnt{
+border:solid 2px var(--gray-color);
+margin: 10px;
+display: block;
+padding: 0 10px;
+color: var(--primary-color);
+font-size: 13px;
+height: 50px;
+min-width: 250px;
+position: relative;
+resize: none;
+display: inline;
+box-shadow: 0px 5px 10px var(--gray-color);
+
+
+}
+
+.update_fields {
+    display: flex;
+    align-items: center;
+}
+
+.list_wrapper{
+    margin:50px 0;
+    justify-content: center;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    border: solid 1px var(--gray-color);
+    padding: 20px 80px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px var(--gray-color);
+}
+
+#ingredients_cnt p,
+#instructions_cnt p{
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#ingredients_cnt p::after,
+#instructions_cnt p::after{
+content: " ";
+height: 2px;
+width: 100%;
+background: var(--secondary-color);
+position: absolute;
+bottom: -10px;
+left: 0;
+}
+
+.ingredient_add,
+.instruction_add{
+    background: var(--primary-color);
+    color: var(--gray-color);
+    display: inline-block;
+    text-align: center;
+    padding: 3px;
+    border-radius: 3px;
+    width: 20px;
+}
+
+.item_remove{
+    text-align: center;
+    color: white;
+    width: 20px;
+    background: var(--secondary-color);
+    height: 20px;
+    border-radius: 3px;
+    /* display: inline-block; */
+}
+
+.item_remove,
+.ingredient_add,
+.instruction_add{
+    cursor: pointer;
+    scale: 1.1;
+}
+
+
+.item_remove:hover,
+.ingredient_add:hover,
+.instruction_add:hover{
+    
+    border-radius: 10px;
+    transition: all .3s;
+}
+
+.instruction_add::after,
+.ingredient_add::after{
+    position: absolute;
+    background: #2a2a2a;
+    width: max-content;
+    height: max-content;
+    color: #f3f3f3;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3 px var(--primary-color);
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+    display: none;
+    transition: all .5s
+}
+
+.instruction_add::after{
+    content: 'Add instruction';
+}
+.ingredient_add::after{
+    content: 'Add ingredient';
+}
+
+.instruction_add:hover::after,
+.ingredient_add:hover::after{
+    display: inline;
+    transition: all .5s;
+}
+
+
+#update_title{
+    font-size: larger;
+    font-weight: bold;
+    padding:20px
+
+}

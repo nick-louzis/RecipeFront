@@ -1,0 +1,40 @@
+$(document).ready(function(){
+    $("#delete").click(function(){
+        const id = getUrlParameter('id');
+        $.ajax({
+            url:`http://localhost:8080/food/api/${id}`,
+            type:'DELETE',
+            success: function(result){
+                // console.log(result);
+                window.location.href = "/homepage.html";
+            },
+            error: function(xhr, status, error){
+                console.log("Error",status,error);
+            }
+        });
+        
+    });
+
+    let started = false;
+$("#start").click(function() {
+    if (!started) {
+        $("#check_box_1").prop('checked', true);
+        $("#start").text('Stop');
+        started = true;
+    } else {
+        $("#check_box_1").prop('checked', false);
+        $("#start").text('Start');
+        started = false;
+    }
+});
+
+$("#update").click(function() {
+    const id = getUrlParameter('id');
+    window.location.href = "/update.html?id="+ id;
+});
+});
+
+
+
+
+
