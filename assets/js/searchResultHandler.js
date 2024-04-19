@@ -8,7 +8,7 @@ $(document).ready(function() {
         const recipeCard = `
         <div class="recipeCard" id=${recipe.id}>
                 <div class="recipeImg">
-                    <img src="./images/icon.svg">
+                    <img src=${recipe.main_image || "./images/icon.svg"} id="card_image">
                 </div>
                 <div class="recipeInfo">
                     <p class="recipeTitle">${recipe.title}</p>

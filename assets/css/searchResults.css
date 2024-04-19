@@ -45,6 +45,7 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    height: 140px;
 }
 .recipeInfo{
     flex: 1;
@@ -83,4 +84,11 @@ gap: 10px;
     word-wrap: break-word;
     
     
+}
+
+#card_image{
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: fit-content;
 }
