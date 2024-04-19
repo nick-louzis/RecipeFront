@@ -208,12 +208,12 @@ function getRecipeByID(recipeID) {
         }
 
 
-        var product_page_image = './images/no_image.jpg';
+        var product_page_image = './images/pizza.jpg';
         if (recipe.main_image){
             product_page_image = recipe.main_image;
         }
-        $("#main_image_recipe_page").show();
-        $("#main_image_recipe_page").attr('src', product_page_image);
+        $("#image").show();
+        $("#image").attr('src', product_page_image);
 
 
 
