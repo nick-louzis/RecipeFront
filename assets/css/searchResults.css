@@ -98,3 +98,58 @@ gap: 10px;
   width: fit-content;
   border-radius: 8px 8px 0 0;
 }
+
+
+.filter_cnt{
+    height: 80px;
+
+}
+
+.filter_inner_wrapper{
+    margin-left: 50px;
+    margin-top: 50px;
+    font-size: larger;
+    font-weight: bold;
+}
+.filter_inner_wrapper *{
+    background: none;
+}
+
+
+
+.filter_inner_wrapper select{
+background: #e2e2e2;
+color:#2a2a2a;
+letter-spacing: 2px;
+font-size: 13px;
+font-style: italic;
+}
+
+.filter_inner_wrapper select,
+.filter_inner_wrapper button {
+    display: inline-block;        /* Makes each element block-level, causing them to stack vertically */
+    min-width: 10%;
+    max-width: 20%;           /* Each element will take the full width of its parent */
+    padding: 10px;         /* Adds padding inside the select and button for better touch interaction */
+    margin: 10px 0;        /* Adds vertical spacing between elements */
+    border: 1px solid #ccc;/* Adds a subtle border to the elements */
+    border-radius: 5px;    /* Rounds the corners of the borders */
+    /* Sets a white background color */
+}
+
+.filter_inner_wrapper button {
+    background-color:#e23235; /* Sets a blue background color for buttons */
+    color: white;              /* Sets the text color to white for buttons */
+    border-color: #bf3033;     /* Darker blue border for the button */
+    cursor: pointer;           /* Changes the mouse cursor to pointer when hovering over the button */
+}
+
+.filter_inner_wrapper select:hover,
+.filter_inner_wrapper button:hover {
+    background-color: #f8f9fa; /* Light grey background on hover for select, lightens blue for button */
+}
+
+.filter_inner_wrapper button:hover {
+    background-color: #a1292b; /* Darkens the button background on hover */
+}
+

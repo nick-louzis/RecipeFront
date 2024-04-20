@@ -16,8 +16,7 @@ $(document).ready(function() {
     //get the recipes from sessionStorage
     const recipes = JSON.parse(sessionStorage.getItem('recipes'));
 
-    //create a new recipe card with the recipe information
-    $.each(recipes, function (index, recipe) { 
+    const createRecipeCard = function(recipe){
         const recipeCard = `
         <div class="recipeCard" id=${recipe.id}>
                 <div class="recipeImg">
@@ -41,7 +40,13 @@ $(document).ready(function() {
                     </div>         
                 </div>
             </div>`
-        $('.results_inner_cnt').append(recipeCard)
+        return recipeCard;
+    }
+    //create a new recipe card with the recipe information
+    $.each(recipes, function (index, recipe) { 
+        const recipeCard = createRecipeCard(recipe);
+        $('.results_inner_cnt').append(recipeCard);
+    
     });
 
     //redirect to the recipe 
@@ -52,18 +57,21 @@ $(document).ready(function() {
 
 
     $(document).on('click', '#category_filter', function() {
-        $('.loading-screen').show();
-
+        
         let filter =  $('select[name=filter_value] option:selected').val();
-        console.log(filter);
-        $('.results_inner_cnt').html('')
+        // console.log(filter);
+        $('.results_inner_cnt').html('');
 
-        const recipes = null;
+        
+        
         $.get(`http://localhost:8080/food/api/categories/single?id=${filter}`,function(recipeData){
-
-            console.log(recipeData);
-        }).done(
-            $('.loading-screen').hide()
-        )
+            $('.loading-screen').show();
+            $.each(recipeData, function(index, recipe){
+                const recipeCard = createRecipeCard(recipe);
+                $('.results_inner_cnt').append(recipeCard);
+            });
+            $('.loading-screen').hide();
+            
+        });
     });
 });
