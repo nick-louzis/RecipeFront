@@ -1,4 +1,17 @@
 $(document).ready(function() {
+
+    // Get all categories
+     $.get("http://localhost:8080/food/categories/all", function(data){
+        console.log(data);
+     }).done(function(data){
+        const options= $('#filter_inner');
+        $.each(data,function(index, category){
+            const option = `<option value="${category.id}">${category.name}</option>`
+            options.append(option);
+        })
+     })
+
+
     
     //get the recipes from sessionStorage
     const recipes = JSON.parse(sessionStorage.getItem('recipes'));
@@ -36,4 +49,21 @@ $(document).ready(function() {
         const recipeID = $(this).attr('id');
         window.location.href = '/syntagi.html?id='+ recipeID;
     })
+
+
+    $(document).on('click', '#category_filter', function() {
+        $('.loading-screen').show();
+
+        let filter =  $('select[name=filter_value] option:selected').val();
+        console.log(filter);
+        $('.results_inner_cnt').html('')
+
+        const recipes = null;
+        $.get(`http://localhost:8080/food/api/categories/single?id=${filter}`,function(recipeData){
+
+            console.log(recipeData);
+        }).done(
+            $('.loading-screen').hide()
+        )
+    });
 });

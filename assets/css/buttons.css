@@ -39,7 +39,7 @@ transform: scale(1.1);
 }
 
 
-@keyframes fadeIn{
+/* @keyframes fadeIn{
     from { 
         scale: .5;
         opacity: 0;
@@ -51,7 +51,7 @@ transform: scale(1.1);
 
 a{
 animation: fadeIn 1.3s ease-in-out forwards;
-}
+} */
 
 @keyframes toRight{
     from { 

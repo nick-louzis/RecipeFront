@@ -8,8 +8,13 @@ function slickInitialize(element_id, slidesToShow) {
             centerMode: true,
             centerPadding: '0px',
             slidesToShow: slidesToShow,
-            infinite: false,
-            initialSlide: 1,
+            slidesToScroll: 2,
+            speed: 300,
+            autoplay: true,
+            useCSS:true,
+            autoplaySpeed: 2000,
+              infinite: false,
+            initialSlide: 3,
             responsive: [
                 {
                     breakpoint: 992,

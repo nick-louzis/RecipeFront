@@ -43,20 +43,21 @@ $(document).ready(function(){
 $("#formSearch").submit(function(e){
     e.preventDefault()
     let title = $('#search-form').val().trim()
- 
+    
     
     $.get('http://localhost:8080/food/api/v1',{ title: title }, function(data){
         console.log(data);
     
     const currentUrl = window.location.pathname;
     if (data.length<1){
-        window.location.href="/error.html?title="+title
+        window.location.href="/error.html?title="+title;
+         
 
     }else{
-
+        // console.log(sessionStorage);
         sessionStorage.setItem('recipes', JSON.stringify(data));
         window.location.href ='/search.html'
-        console.log(sessionStorage.getItem('recipes'));
+        // console.log(sessionStorage.getItem('recipes'));
         // const recipeId = data[0].id;
         // window.location.href="/syntagi.html?id="+recipeId
     }
