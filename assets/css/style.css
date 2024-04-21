@@ -494,6 +494,14 @@ form label {
   
 }
 
+
+@media(max-width:767px){
+    .left-side img{
+        height: 300px;
+        width: 300px;
+    }
+}
+
 .right-side {
     max-width: 100%;
     padding: 50px;
