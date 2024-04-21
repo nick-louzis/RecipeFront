@@ -45,7 +45,7 @@ $("#formSearch").submit(function(e){
     let title = $('#search-form').val().trim()
     
     
-    $.get('http://localhost:8080/food/api/v1',{ title: title }, function(data){
+    $.get('https://noptapi.onrender.com/food/api/v1',{ title: title }, function(data){
         console.log(data);
     
     const currentUrl = window.location.pathname;
@@ -107,7 +107,7 @@ var ajaxDeferred = $.Deferred();
 
 function getAllRecipes(pointToID = '', withClass = '', withHref = '') {
     // Fetch and display all recipes
-    $.get('http://localhost:8080/food/api', function (recipes) {
+    $.get('https://noptapi.onrender.com/food/api', function (recipes) {
         var sliderSlick = $('.photoslider_homepage__wrapper');
         sliderSlick.append('<div class="slides" id=' + pointToID + '>');
         var $recipeList = $('#' + pointToID);
@@ -194,7 +194,7 @@ function initProgressBar() {
 //Get recipe by ID for the recipe Page
 function getRecipeByID(recipeID) {
     // Fetch and display all recipes
-    $.get('http://localhost:8080/food/api/recipe/' + recipeID, function (recipe) {
+    $.get('https://noptapi.onrender.com/food/api/recipe/' + recipeID, function (recipe) {
         console.log(recipe);
         $('title').empty().text(recipe.title);
 
@@ -259,7 +259,7 @@ function getRecipeByID(recipeID) {
 
 function getRecipe(recipeID) {
     // Fetch and display all recipes
-    $.get('http://localhost:8080/food/api/recipe/' + recipeID, function (recipe) {
+    $.get('https://noptapi.onrender.com/food/api/recipe/' + recipeID, function (recipe) {
         $('.recipe_name').text(recipe.name);
     }
     ).fail(function(error) {
@@ -467,7 +467,7 @@ $(document).ready(function (){
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://localhost:8080/food/api/addRecipe',
+                    url: 'https://noptapi.onrender.com/food/api/addRecipe',
                     contentType: 'application/json',
                     data: jsonData,
                     success: function (response){

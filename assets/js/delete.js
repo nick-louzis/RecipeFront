@@ -2,7 +2,7 @@ $(document).ready(function(){
     $("#delete").click(function(){
         const id = getUrlParameter('id');
         $.ajax({
-            url:`http://localhost:8080/food/api/${id}`,
+            url:`https://noptapi.onrender.com/food/api/${id}`,
             type:'DELETE',
             success: function(result){
                 // console.log(result);

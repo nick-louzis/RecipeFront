@@ -3,7 +3,7 @@ $(document).ready(function () {
     var recipe_id = getUrlParameter('id');
   
    //  console.log(recipe_id);
-    const url = 'http://localhost:8080/food/api/recipe/' + recipe_id;
+    const url = 'https://noptapi.onrender.com/food/api/recipe/' + recipe_id;
     console.log(url);
     $.get(url,function (data) {
 
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:8080/food',
+            url: 'https://noptapi.onrender.com/food',
             contentType: 'application/json',
             data: jsonData,
             success: function (response){
