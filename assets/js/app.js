@@ -50,13 +50,13 @@ $("#formSearch").submit(function(e){
     
     const currentUrl = window.location.pathname;
     if (data.length<1){
-        window.location.href="/error.html?title="+title;
+        window.location.href="/RecipeFront/error.html?title="+title;
          
 
     }else{
         // console.log(sessionStorage);
         sessionStorage.setItem('recipes', JSON.stringify(data));
-        window.location.href ='/search.html'
+        window.location.href ='/RecipeFront/search.html'
         // console.log(sessionStorage.getItem('recipes'));
         // const recipeId = data[0].id;
         // window.location.href="/syntagi.html?id="+recipeId

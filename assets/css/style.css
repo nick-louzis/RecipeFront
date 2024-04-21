@@ -489,7 +489,7 @@ form label {
   border-radius: 10px;
   transform: translate(20%,5%);
   display: block;
-  max-height: 500px;
+  height: 500px;
   object-fit: cover;
   
 }
