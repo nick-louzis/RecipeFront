@@ -6,7 +6,7 @@ $(document).ready(function(){
             type:'DELETE',
             success: function(result){
                 // console.log(result);
-                window.location.href = "/homepage.html";
+                window.location.href = "/";
             },
             error: function(xhr, status, error){
                 console.log("Error",status,error);
@@ -30,7 +30,7 @@ $("#start").click(function() {
 
 $("#update").click(function() {
     const id = getUrlParameter('id');
-    window.location.href = "/update.html?id="+ id;
+    window.location.href = "/RecipeFront/update.html?id="+ id;
 });
 });
 
