@@ -11,7 +11,18 @@ padding: 20px;
 display: flex;
 justify-content:space-around;
 margin: 50px;
+position: relative;
 
+}
+
+
+.btns_wrapper::after{
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #bf3033;
+    position: absolute;
+    bottom: -30px;
 }
 
 .btns_wrapper button {

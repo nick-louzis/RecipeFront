@@ -484,6 +484,14 @@ form label {
 
 .left-side img {
     max-width: 100%;
+    /* position: absolute; */
+  width: 600px;
+  border-radius: 10px;
+  transform: translate(20%,5%);
+  display: block;
+  max-height: 500px;
+  object-fit: cover;
+  
 }
 
 .right-side {
