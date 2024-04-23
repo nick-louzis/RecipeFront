@@ -3,26 +3,32 @@ $(window).on("load", function () {
 
     var showLoadingScreen = true;
 
-    $(document).ajaxStart(function (event, jqXHR) {
-        showLoadingScreen = true;
+    // $(document).ajaxStart(function (event, jqXHR) {
+    //     showLoadingScreen = true;
+    //     $('.loading-screen').show();
+    // });
+    $(document).on("ajaxStart", function(){
         $('.loading-screen').show();
-    });
+    })
 
-
-    $(document).ajaxStop(function (event, jqXHR) {
-        showLoadingScreen = false;
-        //Hide spinner
-        setTimeout(function(){
-            if (showLoadingScreen) {
-                $('.loading-screen').hide();
-            }
-        }, 500);
-    });
-    //Hide spinner
-    setTimeout(function(){
-        showLoadingScreen = false;
+    $(document).on("ajaxStop", function(){
         $('.loading-screen').hide();
-    }, 500);
+    })
+
+    // $(document).ajaxStop(function (event, jqXHR) {
+    //     showLoadingScreen = false;
+    //     //Hide spinner
+    //     setTimeout(function(){
+    //         if (showLoadingScreen) {
+    //             $('.loading-screen').hide();
+    //         }
+    //     }, 500);
+    // });
+    //Hide spinner
+    // setTimeout(function(){
+    //     showLoadingScreen = false;
+    //     $('.loading-screen').hide();
+    // }, 500);
 });
 
 $(document).ready(function(){
