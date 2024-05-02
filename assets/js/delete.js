@@ -6,7 +6,7 @@ $(document).ready(function(){
             type:'DELETE',
             success: function(result){
                 // console.log(result);
-                window.location.href = "/";
+                window.location.href = "/RecipeFront/index.html";
             },
             error: function(xhr, status, error){
                 console.log("Error",status,error);
