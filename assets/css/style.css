@@ -17,6 +17,7 @@ body {
     max-width: 100%;
     position: relative;
     width: 1920px;
+    overflow:clip;
 }
 
 .container {
