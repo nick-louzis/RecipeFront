@@ -56,13 +56,13 @@ $("#formSearch").submit(function(e){
     
     const currentUrl = window.location.pathname;
     if (data.length<1){
-        window.location.href="/RecipeFront/error.html?title="+title;
+        window.location.href="/error.html?title="+title;
          
 
     }else{
         // console.log(sessionStorage);
         sessionStorage.setItem('recipes', JSON.stringify(data));
-        window.location.href ='/RecipeFront/search.html'
+        window.location.href ='/search.html'
         // console.log(sessionStorage.getItem('recipes'));
         // const recipeId = data[0].id;
         // window.location.href="/syntagi.html?id="+recipeId
@@ -149,13 +149,37 @@ function getAllRecipes(pointToID = '', withClass = '', withHref = '') {
             $sliderBoxDescription.append($sliderBoxDescriptionTitle, $sliderBoxDescriptionPrepTime)
             $sliderBoxWrapper.append($sliderBoxImage, $sliderBoxDescription);
             $recipeList.append($sliderBoxWrapper);
+
+           
         });
 
+        
+        makeCategories(recipes)
         // Close the container after the forEach loop
         sliderSlick.append('</div>');
         ajaxDeferred.resolve();
     });
 }
+
+
+function makeCategories(recipies){
+    // console.log(recipe[index].category[0].name);
+    const wrapper = $('.circle-wrapper');
+    
+    $.each(recipies, function(index, recipe){
+        wrapper.append(`<div class="circle">
+        <a href="./search.html">
+        <div class="home-category" style="background-image: url(${recipe.main_image || "./images/pizza.jpg"})">
+        <img src="./images/icon.svg">
+            <h3>${recipe.category?.[0]?.name ?? "none"} </h3>
+        </div>
+        </a>
+    </div>`)
+    });
+
+}
+
+
 
 
 function truncate(input, numberOfChars){
