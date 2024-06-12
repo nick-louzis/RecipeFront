@@ -52,7 +52,7 @@ $(document).ready(function() {
     //redirect to the recipe 
     $(document).on('click', '.recipeCard', function() {
         const recipeID = $(this).attr('id');
-        window.location.href = '/syntagi.html?id='+ recipeID;
+        window.location.href = '/RecipeFront/syntagi.html?id='+ recipeID;
     })
 
 
