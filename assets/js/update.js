@@ -2,7 +2,7 @@
 $(document).ready(function () {
     var recipe_id = getUrlParameter('id');
   
-   //  console.log(recipe_id);
+    console.log(recipe_id);
     const url = 'https://noptapi.onrender.com/food/api/recipe/' + recipe_id;
     console.log(url);
     $.get(url,function (data) {
@@ -18,39 +18,20 @@ $(document).ready(function () {
 
        let ingredientsHtml = `<p>Ingredients: <span class="ingredient_add">+</span></p> `;
        $.each(data.ingredients,function(key, value){
-        const lastIngredient = data.ingredients.length - 1 ;
            ingredientsHtml+= `<div class="update_fields ingredient">
                        <textarea class="input_cnt input_ingred">${value}</textarea>
                        <span class="item_remove">-</span>
                        </div>`;
-        if(lastIngredient == key){
-            ingredientsHtml+= `<div class="update_fields ingredient">
-                       <textarea class="input_cnt input_ingred">${value}</textarea>
-                       <span class="item_remove">-</span>
-                    
-                       </div>`;
-        }
-                       
+              
        })
 
 
        let instructionsHtml = `<p>Instructions: <span class="instruction_add">+</span></p> `;
-       $.each(data.instructions,function(key, value){
-        const lastInstructions = data.instructions.length - 1 ;
-        
+       $.each(data.instructions,function(key, value){   
            instructionsHtml+= `<div class= "update_fields instruction">
                        <textarea class="input_cnt input_inst">${value}</textarea>
                        <span class="item_remove">-</span>
                        </div>`;
-
-
-        if(lastInstructions == key){
-            instructionsHtml+= `<div class= "update_fields instruction">
-                        <textarea class="input_cnt input_inst">${value}</textarea>
-                        <span class="item_remove">-</span>
-                        <span class="instruction_add" style="margin: 5px;">+</span></p>
-                        </div>`;
-                }
        })
 
            $('#title_cnt').append($title);
@@ -75,13 +56,6 @@ $(document).ready(function () {
     var instructions = $('#ingredients_cnt');
 
     $(document).on('click','.ingredient_add',function(){
-
-        var lastIngredient = instructions.children().last();
-        lastIngredient = lastIngredient.children().last(); 
-        
-        
-
-       
 
         let newDiv = $(`
         <div class="update_fields ingredient">

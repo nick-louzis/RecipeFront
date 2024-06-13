@@ -218,6 +218,7 @@ form label {
 .circle-wrapper.flex .home-category {
     border-radius: 50%;
     margin: 0 auto;
+    border: #d6d6d6 1px solid;
     position: relative;
 }
    
@@ -228,6 +229,9 @@ form label {
 .home-category {
     height: 250px;
     width: 250px;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .home-category h3 {
