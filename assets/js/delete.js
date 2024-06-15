@@ -2,11 +2,11 @@ $(document).ready(function(){
     $("#delete").click(function(){
         const id = getUrlParameter('id');
         $.ajax({
-            url:`http://localhost:8080/food/api/${id}`,
+            url:`https://noptapi.onrender.com/food/api/${id}`,
             type:'DELETE',
             success: function(result){
                 // console.log(result);
-                window.location.href = "/homepage.html";
+                window.location.href = "/RecipeFront/index.html";
             },
             error: function(xhr, status, error){
                 console.log("Error",status,error);
@@ -30,7 +30,7 @@ $("#start").click(function() {
 
 $("#update").click(function() {
     const id = getUrlParameter('id');
-    window.location.href = "/update.html?id="+ id;
+    window.location.href = "update.html?id="+ id;
 });
 });
 

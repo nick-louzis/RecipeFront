@@ -10,33 +10,7 @@
 </head>
 <body>
 <div class="outer-container">
-    <header id="header">
-        <div class="header-inner flex">
-            <div class="logo">
-                <a href="./homepage.html"><img src="./images/logo.png" alt="Logo icon"></a>
-            </div>
-            <div id="menu-toggle">
-                <span class="fa-solid fa-bars"></span>
-            </div>
-            <nav role="navigation">
-                <ul id="navigation-menu" class="flex">
-                    <li>
-                        <form class="search flex" action="" id="formSearch">
-                            <label for="search-form">Search Form</label>
-                            <input type="search" id="search-form" name="search-form">
-                            <button id="main_search" type="submit">
-                                <span class="fa-solid fa-magnifying-glass search-icon"></span>
-                            </button>
-                        </form>
-                    </li>    
-                    <li><a class="nav_bar_link_item" href="./category.html">ΚΑΤΗΓΟΡΙΕΣ</a></li>
-                    <li><a class="nav_bar_link_item" href="./recipe-registration.html">ΚΑΤΑΧΩΡΗΣΗ ΣΥΝΤΑΓΗΣ</a></li>
-                    <!--<li><a class="nav_bar_link_item" href="./login.html">LOGIN</a></li>
-                    <li><a class="nav_bar_link_item" href="./register.html">REGISTER</a></li>-->
-                </ul>
-            </nav>
-        </div>    
-    </header>
+    <header-container></header-container>
 
     <div class="update_cnt">
         <p id="update_title">Update Recipe</p>
@@ -52,13 +26,7 @@
        <button style="border: none; padding: 10px 12px; font-weight: bold;" id="updateStart">Update Recipe</button>
    </div>
 
-    <footer class="flex">
-        <div class="logo flex">
-            <img src="./images/logo.png" alt="Logo icon">
-        </div>
-        <div class="copyright"><span>Copyright © 2024 Συνταγές Μαγειρικής. All rights reserved. Designed &amp; Built by Κοτσώνης Ιωάννης, Λούζης Νίκος, Μπακαλώνη Ελπίδα, Τζιβένης Κωνσταντίνος</span>
-        </div>
-    </footer>
+   <footer-container></footer-container>
 
 </div>
 <div class="loading-screen"></div>
@@ -66,6 +34,7 @@
 <script src="./assets/js/jquery/jquery.validate.min.js"></script>
 <script src="./assets/js/app.js"></script>
 <script src="./assets/js/update.js"></script>
+<script defer src="./assets/js/navLink.js"></script>
 </body>
 
 </html>

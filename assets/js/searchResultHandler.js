@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // Get all categories
-     $.get("http://localhost:8080/food/categories/all", function(data){
+     $.get("https://noptapi.onrender.com/food/categories/all", function(data){
         console.log(data);
      }).done(function(data){
         const options= $('#filter_inner');
@@ -52,7 +52,7 @@ $(document).ready(function() {
     //redirect to the recipe 
     $(document).on('click', '.recipeCard', function() {
         const recipeID = $(this).attr('id');
-        window.location.href = '/syntagi.html?id='+ recipeID;
+        window.location.href = '/RecipeFront/syntagi.html?id='+ recipeID;
     })
 
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
 
         
         
-        $.get(`http://localhost:8080/food/api/categories/single?id=${filter}`,function(recipeData){
+        $.get(`https://noptapi.onrender.com/food/api/categories/single?id=${filter}`,function(recipeData){
             $('.loading-screen').show();
             $.each(recipeData, function(index, recipe){
                 const recipeCard = createRecipeCard(recipe);

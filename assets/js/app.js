@@ -3,26 +3,32 @@ $(window).on("load", function () {
 
     var showLoadingScreen = true;
 
-    $(document).ajaxStart(function (event, jqXHR) {
-        showLoadingScreen = true;
+    // $(document).ajaxStart(function (event, jqXHR) {
+    //     showLoadingScreen = true;
+    //     $('.loading-screen').show();
+    // });
+    $(document).on("ajaxStart", function(){
         $('.loading-screen').show();
-    });
+    })
 
-
-    $(document).ajaxStop(function (event, jqXHR) {
-        showLoadingScreen = false;
-        //Hide spinner
-        setTimeout(function(){
-            if (showLoadingScreen) {
-                $('.loading-screen').hide();
-            }
-        }, 500);
-    });
-    //Hide spinner
-    setTimeout(function(){
-        showLoadingScreen = false;
+    $(document).on("ajaxStop", function(){
         $('.loading-screen').hide();
-    }, 500);
+    })
+
+    // $(document).ajaxStop(function (event, jqXHR) {
+    //     showLoadingScreen = false;
+    //     //Hide spinner
+    //     setTimeout(function(){
+    //         if (showLoadingScreen) {
+    //             $('.loading-screen').hide();
+    //         }
+    //     }, 500);
+    // });
+    //Hide spinner
+    // setTimeout(function(){
+    //     showLoadingScreen = false;
+    //     $('.loading-screen').hide();
+    // }, 500);
 });
 
 $(document).ready(function(){
@@ -43,32 +49,40 @@ $(document).ready(function(){
 $("#formSearch").submit(function(e){
     e.preventDefault()
     let title = $('#search-form').val().trim()
-    
-    
-    $.get('http://localhost:8080/food/api/v1',{ title: title }, function(data){
-        console.log(data);
-    
-    const currentUrl = window.location.pathname;
-    if (data.length<1){
-        window.location.href="/error.html?title="+title;
-         
 
-    }else{
-        // console.log(sessionStorage);
-        sessionStorage.setItem('recipes', JSON.stringify(data));
-        window.location.href ='/search.html'
-        // console.log(sessionStorage.getItem('recipes'));
-        // const recipeId = data[0].id;
-        // window.location.href="/syntagi.html?id="+recipeId
-    }
-    addTxt(data[0])
-
-    }).fail(function(error){
-        console.log(error);
-    });
+    if(title != ""){
+        $('#alertDialog').hide();
+        $.get('https://noptapi.onrender.com/food/api/v1',{ title: title }, function(data){
+            console.log(data);
         
+        const currentUrl = window.location.pathname;
+        if (data.length<1){
+            window.location.href="/error.html?title="+title;
+             
     
-})    
+        }else{
+            // console.log(sessionStorage);
+            sessionStorage.setItem('recipes', JSON.stringify(data));
+            window.location.href ='/search.html'
+            // console.log(sessionStorage.getItem('recipes'));
+            // const recipeId = data[0].id;
+            // window.location.href="/syntagi.html?id="+recipeId
+        }
+        addTxt(data[0])
+    
+        }).fail(function(error){
+            console.log(error);
+        });
+            
+    } else {
+        $('#alertDialog').show();
+    }
+    
+    
+    
+})   
+
+
 
 
 function addTxt(recipe){
@@ -76,6 +90,14 @@ function addTxt(recipe){
 }
 
 
+});
+
+$(document).on('touchstart click', '#formSearch', function() {
+    $('#alertDialog').show();
+});
+
+$(document).on('input', '#formSearch', function() {
+    $('#alertDialog').hide();
 });
 
 
@@ -107,7 +129,7 @@ var ajaxDeferred = $.Deferred();
 
 function getAllRecipes(pointToID = '', withClass = '', withHref = '') {
     // Fetch and display all recipes
-    $.get('http://localhost:8080/food/api', function (recipes) {
+    $.get('https://noptapi.onrender.com/food/api', function (recipes) {
         var sliderSlick = $('.photoslider_homepage__wrapper');
         sliderSlick.append('<div class="slides" id=' + pointToID + '>');
         var $recipeList = $('#' + pointToID);
@@ -143,13 +165,46 @@ function getAllRecipes(pointToID = '', withClass = '', withHref = '') {
             $sliderBoxDescription.append($sliderBoxDescriptionTitle, $sliderBoxDescriptionPrepTime)
             $sliderBoxWrapper.append($sliderBoxImage, $sliderBoxDescription);
             $recipeList.append($sliderBoxWrapper);
+
+           
         });
 
+        
+        makeCategories(recipes)
         // Close the container after the forEach loop
         sliderSlick.append('</div>');
         ajaxDeferred.resolve();
     });
 }
+
+
+//create the category section with unique category names
+function makeCategories(recipes) {
+    const wrapper = $('.circle-wrapper');
+    const uniqueCategories = new Set();
+
+    $.each(recipes, function(index, recipe) {
+        if (recipe.category.length > 0) {
+            const categoryName = recipe.category[0].name;
+
+            if (!uniqueCategories.has(categoryName)) {
+                uniqueCategories.add(categoryName);
+
+                wrapper.append(`
+                    <div class="circle">
+                        <a href="./search.html">
+                            <div class="home-category" style="background-image: url(${recipe.main_image || "./images/pizza.jpg"})">
+                                <img src="./images/icon.svg">
+                                <h3>${categoryName}</h3>
+                            </div>
+                        </a>
+                    </div>
+                `);
+            }
+        }
+    });
+}
+
 
 
 function truncate(input, numberOfChars){
@@ -194,7 +249,7 @@ function initProgressBar() {
 //Get recipe by ID for the recipe Page
 function getRecipeByID(recipeID) {
     // Fetch and display all recipes
-    $.get('http://localhost:8080/food/api/recipe/' + recipeID, function (recipe) {
+    $.get('https://noptapi.onrender.com/food/api/recipe/' + recipeID, function (recipe) {
         console.log(recipe);
         $('title').empty().text(recipe.title);
 
@@ -259,7 +314,7 @@ function getRecipeByID(recipeID) {
 
 function getRecipe(recipeID) {
     // Fetch and display all recipes
-    $.get('http://localhost:8080/food/api/recipe/' + recipeID, function (recipe) {
+    $.get('https://noptapi.onrender.com/food/api/recipe/' + recipeID, function (recipe) {
         $('.recipe_name').text(recipe.name);
     }
     ).fail(function(error) {
@@ -467,7 +522,7 @@ $(document).ready(function (){
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://localhost:8080/food/api/addRecipe',
+                    url: 'https://noptapi.onrender.com/food/api/addRecipe',
                     contentType: 'application/json',
                     data: jsonData,
                     success: function (response){

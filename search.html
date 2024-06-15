@@ -17,34 +17,7 @@
 
 </head>
 <body>
-    <header id="header">
-        <div class="header-inner flex">
-            <div class="logo">
-                <a href="./homepage.html"><img src="./images/logo.png" alt="Logo icon"></a>
-            </div>
-            <div id="menu-toggle">
-                <span class="fa-solid fa-bars"></span>
-            </div>
-            <nav role="navigation">
-                <ul id="navigation-menu" class="flex">
-                    <li>
-                        <form class="search flex" action="" id="formSearch">
-                            <label for="search-form">Search Form</label>
-                            <input type="search" id="search-form" name="search-form">
-                            <button id="main_search" type="submit">
-
-                                <span class="fa-solid fa-magnifying-glass search-icon"></span>
-                            </button>
-                        </form>
-                    </li>    
-                    <li><a class="nav_bar_link_item" href="./category.html">ΚΑΤΗΓΟΡΙΕΣ</a></li>
-                    <li><a class="nav_bar_link_item" href="./recipe-registration.html">ΚΑΤΑΧΩΡΗΣΗ ΣΥΝΤΑΓΗΣ</a></li>
-                    <!--<li><a class="nav_bar_link_item" href="./login.html">LOGIN</a></li>
-                    <li><a class="nav_bar_link_item" href="./register.html">REGISTER</a></li>-->
-                </ul>
-            </nav>
-        </div>    
-    </header>
+    <header-container></header-container>
     <section class="results_cnt">
         
         <div class="filter_cnt">
@@ -70,6 +43,7 @@
     <script src="./assets/js/slick_slider_props/slick_slider_params.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/searchResultHandler.js"></script>
+    <script defer src="./assets/js/navLink.js"></script>
 </body>
     
 </html>
