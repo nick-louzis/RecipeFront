@@ -49,32 +49,40 @@ $(document).ready(function(){
 $("#formSearch").submit(function(e){
     e.preventDefault()
     let title = $('#search-form').val().trim()
-    
-    
-    $.get('https://noptapi.onrender.com/food/api/v1',{ title: title }, function(data){
-        console.log(data);
-    
-    const currentUrl = window.location.pathname;
-    if (data.length<1){
-        window.location.href="/error.html?title="+title;
-         
 
-    }else{
-        // console.log(sessionStorage);
-        sessionStorage.setItem('recipes', JSON.stringify(data));
-        window.location.href ='/search.html'
-        // console.log(sessionStorage.getItem('recipes'));
-        // const recipeId = data[0].id;
-        // window.location.href="/syntagi.html?id="+recipeId
-    }
-    addTxt(data[0])
-
-    }).fail(function(error){
-        console.log(error);
-    });
+    if(title != ""){
+        $('#alertDialog').hide();
+        $.get('https://noptapi.onrender.com/food/api/v1',{ title: title }, function(data){
+            console.log(data);
         
+        const currentUrl = window.location.pathname;
+        if (data.length<1){
+            window.location.href="/error.html?title="+title;
+             
     
-})    
+        }else{
+            // console.log(sessionStorage);
+            sessionStorage.setItem('recipes', JSON.stringify(data));
+            window.location.href ='/search.html'
+            // console.log(sessionStorage.getItem('recipes'));
+            // const recipeId = data[0].id;
+            // window.location.href="/syntagi.html?id="+recipeId
+        }
+        addTxt(data[0])
+    
+        }).fail(function(error){
+            console.log(error);
+        });
+            
+    } else {
+        $('#alertDialog').show();
+    }
+    
+    
+    
+})   
+
+
 
 
 function addTxt(recipe){
@@ -82,6 +90,11 @@ function addTxt(recipe){
 }
 
 
+});
+
+
+$(document).on('input', '#formSearch', function() {
+    $('#alertDialog').hide();
 });
 
 
@@ -162,23 +175,32 @@ function getAllRecipes(pointToID = '', withClass = '', withHref = '') {
 }
 
 
-function makeCategories(recipies){
-    // console.log(recipe[index].category[0].name);
+//create the category section with unique category names
+function makeCategories(recipes) {
     const wrapper = $('.circle-wrapper');
-    
-    $.each(recipies, function(index, recipe){
-        wrapper.append(`<div class="circle">
-        <a href="./search.html">
-        <div class="home-category" style="background-image: url(${recipe.main_image || "./images/pizza.jpg"})">
-        <img src="./images/icon.svg">
-            <h3>${recipe.category?.[0]?.name ?? "none"} </h3>
-        </div>
-        </a>
-    </div>`)
+    const uniqueCategories = new Set();
+
+    $.each(recipes, function(index, recipe) {
+        if (recipe.category.length > 0) {
+            const categoryName = recipe.category[0].name;
+
+            if (!uniqueCategories.has(categoryName)) {
+                uniqueCategories.add(categoryName);
+
+                wrapper.append(`
+                    <div class="circle">
+                        <a href="./search.html">
+                            <div class="home-category" style="background-image: url(${recipe.main_image || "./images/pizza.jpg"})">
+                                <img src="./images/icon.svg">
+                                <h3>${categoryName}</h3>
+                            </div>
+                        </a>
+                    </div>
+                `);
+            }
+        }
     });
-
 }
-
 
 
 

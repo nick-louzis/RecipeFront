@@ -30,7 +30,7 @@ $("#start").click(function() {
 
 $("#update").click(function() {
     const id = getUrlParameter('id');
-    window.location.href = "/RecipeFront/update.html?id="+ id;
+    window.location.href = "update.html?id="+ id;
 });
 });
 

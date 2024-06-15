@@ -16,23 +16,30 @@ $(document).ready(function () {
            </div>`
 
 
-       let ingredientsHtml = `<p>Ingredients: <span class="ingredient_add">+</span></p> `;
-       $.each(data.ingredients,function(key, value){
-           ingredientsHtml+= `<div class="update_fields ingredient">
-                       <textarea class="input_cnt input_ingred">${value}</textarea>
-                       <span class="item_remove">-</span>
-                       </div>`;
-              
-       })
+       let ingredientsHtml = `<p>Ingredients:`;
+       const ingredientsLength = data.ingredients.length - 1;
+       $.each(data.ingredients, function(key, value){
+        ingredientsHtml += `<div class="update_fields ingredient">
+                   <textarea class="input_cnt input_ingred">${value}</textarea>
+                   <div class="item_remove"><span>-</span></div>`;
+        if (ingredientsLength == key) {
+            ingredientsHtml += `<div class="addInnerIngredient"><span>+</span></div>`;
+        }
+        ingredientsHtml += `</div>`;
+    });
 
 
-       let instructionsHtml = `<p>Instructions: <span class="instruction_add">+</span></p> `;
-       $.each(data.instructions,function(key, value){   
-           instructionsHtml+= `<div class= "update_fields instruction">
-                       <textarea class="input_cnt input_inst">${value}</textarea>
-                       <span class="item_remove">-</span>
-                       </div>`;
-       })
+       let instructionsHtml = `<p>Instructions:`;
+       const instructionsLength  = data.instructions.length -1;
+       $.each(data.instructions, function(key, value){   
+    instructionsHtml += `<div class="update_fields instruction">
+               <textarea class="input_cnt input_inst">${value}</textarea>
+               <span class="item_remove">-</span>`;
+    if (instructionsLength == key) {
+        instructionsHtml += `<div class="addInnerInstruction"><span>+</span></div>`;
+    }
+    instructionsHtml += `</div>`;
+});
 
            $('#title_cnt').append($title);
            $('#prep_time_cnt').append($prep_time);
@@ -61,17 +68,30 @@ $(document).ready(function () {
         <div class="update_fields ingredient">
         <textarea class="input_cnt input_ingred"></textarea>
         <span class="item_remove">-</span>
-        <span class="ingredient_add">+</span></p>
+        <span class="addInnerIngredient">+</span></p>
         </div>`);
 
         $('#ingredients_cnt').children().last().after(newDiv);
-
+        
         var addButton = instructions.find('.ingredient').eq(-2).find('span.ingredient_add');
         addButton.fadeOut(200, function() {
             $(this).remove();
         });
         
         
+    });
+
+    $(document).on('click','.addInnerIngredient', function(){
+        let newDiv = $(`
+            <div class="update_fields ingredient">
+            <textarea class="input_cnt input_ingred"></textarea>
+            <span class="item_remove">-</span>
+            <span class="addInnerIngredient">+</span></p>
+            </div>`);
+            $('#ingredients_cnt').children().last().after(newDiv);
+            this.remove();
+
+        // console.log(this.children);
     });
 
     $(document).on('click','.instruction_add',function(){
