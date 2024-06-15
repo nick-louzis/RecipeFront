@@ -92,6 +92,9 @@ function addTxt(recipe){
 
 });
 
+$(document).on('touchstart click', '#formSearch', function() {
+    $('#alertDialog').show();
+});
 
 $(document).on('input', '#formSearch', function() {
     $('#alertDialog').hide();

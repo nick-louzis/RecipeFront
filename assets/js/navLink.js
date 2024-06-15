@@ -5,7 +5,7 @@ class HeaderContainer extends HTMLElement{
         <header id="header">
             <div class="header-inner flex">
                 <div class="logo">
-                    <a href="/"><img src="./images/logo.png" alt="Logo icon"></a>
+                    <a href="/Recipefront"><img src="./images/logo.png" alt="Logo icon"></a>
                 </div>
                 <div id="menu-toggle">
                     <span class="fa-solid fa-bars"></span>
