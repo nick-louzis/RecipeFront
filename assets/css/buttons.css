@@ -199,50 +199,18 @@ left: 0;
     /* display: inline-block; */
 }
 
-.item_remove,
-.ingredient_add,
-.instruction_add{
+.item_remove {
     cursor: pointer;
-    scale: 1.1;
+    transform: scale(1.1);
+    transition: all .3s; /* Adding transition here so it applies to all changes including hover */
 }
-
 
 .item_remove:hover,
-.ingredient_add:hover,
-.instruction_add:hover{
-    
+.addInnerInstruction:hover,
+.addInnerIngredient:hover {
     border-radius: 10px;
-    transition: all .3s;
 }
 
-.instruction_add::after,
-.ingredient_add::after{
-    position: absolute;
-    background: #2a2a2a;
-    width: max-content;
-    height: max-content;
-    color: #f3f3f3;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3 px var(--primary-color);
-    padding: 5px;
-    font-size: 14px;
-    margin-left: 10px;
-    display: none;
-    transition: all .5s
-}
-
-.instruction_add::after{
-    content: 'Add instruction';
-}
-.ingredient_add::after{
-    content: 'Add ingredient';
-}
-
-.instruction_add:hover::after,
-.ingredient_add:hover::after{
-    display: inline;
-    transition: all .5s;
-}
 
 
 #update_title{
@@ -250,4 +218,37 @@ left: 0;
     font-weight: bold;
     padding:20px
 
+}
+
+.addInnerIngredient,
+.addInnerInstruction{
+    background-color: #2a2a2a;
+    width: 22px;
+    height: 22px;
+    color: white;
+    border-radius: 3px;
+    margin-left: 5px;
+    transition: all .3s;
+    cursor: pointer;
+    
+}
+
+
+
+
+.item_remove,
+.addInnerIngredient,
+.addInnerInstruction{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+}
+
+
+
+.addInnerInstruction span,
+.item_remove span{
+    display: inline-block;
+    height: max-content;
+   
 }

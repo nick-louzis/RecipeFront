@@ -1,0 +1,26 @@
+:root {
+    --primary-color: #2a2a2a;
+    --gray-color:#f3f3f3;
+    --secondary-color: #bf3033;
+    font-family: 'Roboto', sans-serif;
+}
+
+#alertDialog{
+
+    position: absolute;
+    width:100%;
+    font-size: 14px;
+    color: var(--gray-color);
+    height: 50px;
+    background-color: var(--secondary-color);
+    top: 30px;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid;
+    border-color:var(--secondary-color);
+    border-radius: 2px;
+    transition: all .3s;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
